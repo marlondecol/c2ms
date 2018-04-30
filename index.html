@@ -19,9 +19,15 @@
             <div class="left-side">
                 <div class="first-row">
                     <div class="panel" id="inputs">
-                        <legend>Painel de entrada</legend>
+                        <form id="values">
+                            <div class="legend">
+                                Painel de entrada
 
-                        <form>
+                                <div id="reset" class="control push">
+                                    <i class="fa fa-eraser"></i>
+                                </div>
+                            </div>
+
                             <div class="input text">
                                 <label for="address">Endereço</label>
                                 <input type="text" id="address" placeholder="Qual o endereço da célula da memória cache?">
@@ -33,33 +39,88 @@
                             </div>
 
                             <div id="controls">
-                                <div class="input button warning first">
-                                    <input type="reset" id="reset" value="Limpar">
-                                </div>
-
                                 <div class="input button push">
-                                    <input type="button" id="read" value="Ler">
+                                    <button type="button" id="read">
+                                        <i class="fa fa-search"></i> Ler
+                                    </button>
                                 </div>
 
                                 <div class="input button">
-                                    <input type="button" id="write" value="Escrever">
+                                    <button type="button" id="write">
+                                        <i class="fa fa-edit"></i> Escrever
+                                    </button>
                                 </div>
                             </div>
                         </form>
                     </div>
 
                     <div class="panel" id="stats">
-                        <legend>Estatísticas</legend>
+                        <div class="legend">
+                            Estatísticas
+                        </div>
+
+                        <div class="scrollable">
+                            <!-- <div> -->
+                                <div class="row">
+                                    <span class="description">Acessos</span>
+                                    <div id="accesses" class="number push">123</div>
+                                </div>
+                                
+                                <div class="row">
+                                    <span class="description">Acertos</span>
+                                    <div id="hits" class="number push">123</div>
+                                </div>
+                                
+                                <div class="row">
+                                    <span class="description">Faltas</span>
+                                    <div id="misses" class="number push">123</div>
+                                </div>
+                                
+                                <div class="row">
+                                    <span class="description">Leituras</span>
+                                    <div id="reads" class="number push">123</div>
+                                </div>
+                                
+                                <div class="row">
+                                    <span class="description">Escritas</span>
+                                    <div id="writes" class="number push">123</div>
+                                </div>
+                                
+                                <div class="row">
+                                    <span class="description">Acertos na leitura</span>
+                                    <div id="readHits" class="number push">123</div>
+                                </div>
+                                
+                                <div class="row">
+                                    <span class="description">Acertos na escrita</span>
+                                    <div id="writeHits" class="number push">123</div>
+                                </div>
+                                
+                                <div class="row">
+                                    <span class="description">Faltas na leitura</span>
+                                    <div id="readMisses" class="number push">123</div>
+                                </div>
+                                
+                                <div class="row">
+                                    <span class="description">Faltas na escrita</span>
+                                    <div id="writeMisses" class="number push">123</div>
+                                </div>
+                            <!-- </div> -->
+                        </div>
                     </div>
                 </div>
 
                 <div class="panel" id="cache">
-                    <legend>Memória cache</legend>
+                    <div class="legend">
+                        Memória cache
+                    </div>
                 </div>
             </div>
 
             <div class="panel" id="ram">
-                <legend>Memória principal</legend>
+                <div class="legend">
+                    Memória principal
+                </div>
             </div>
         </main>
 
