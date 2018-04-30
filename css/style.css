@@ -1,19 +1,227 @@
+/**
+ * Variables 
+ */
+* {
+    /* Colors */
+    --accent: #1e90ff;
+    --black: #333333;
+    --default: #eaeaea;
+    --legend: #ffffff;
+    --highlight: #f44336;
+    --white: #f8f8f8;
+    
+    /* Fonts */
+    --font: #333333;
+    --darkfont: #333333af;
+    --lightfont: #3333335f;
+
+    /* Sizes */
+    --animation: 0.15s;
+    --border-radius: 3px;
+    --margin: 0.6em;
+    --padding: 0.6em;
+    --double-padding: calc(var(--padding) * 2);
+    --half-padding: calc(var(--padding) / 2);
+}
+
+/**
+ * General
+ */
+html, body {
+    height: 100%;
+}
+
 body {
+    color: var(--font);
+    display: flex;
+    flex-direction: column;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-nav {
-    background: crimson;
+header, footer {
+    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.3);
+    color: var(--legend);
+    padding: var(--double-padding);
+    z-index: 1;
 }
+
+legend {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 12px -2px rgba(0, 0, 0, 0.3);
+    color: var(--black);
+    font-weight: 500;
+    padding: var(--padding);
+    margin-bottom: var(--margin);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);  
+}
+
+label {
+    margin-right: var(--margin);
+    padding: var(--half-padding) 0;
+    vertical-align: text-bottom;
+}
+
+input {
+    outline: none;
+}
+
+.input {
+    display: flex;
+    flex-direction: row;
+    margin: var(--margin);
+    margin-top: 0;
+}
+
+.text input {
+    background: none;
+    border: none;
+    border-bottom: 2px solid var(--lightfont);
+    font-weight: 500;
+    padding: var(--half-padding) 0;
+    transition: border-color var(--animation);
+    width: 100%;
+}
+
+.text input:hover {
+    border-bottom-color: var(--darkfont);
+}
+
+.text input:focus {
+    border-bottom-color: var(--accent);
+}
+
+.text input::placeholder {
+    color: var(--lightfont);
+    font-weight: 400;
+    transition: color var(--animation);
+}
+
+.text input:hover::placeholder {
+    color: var(--darkfont);
+}
+
+.button {
+    margin-left: 0;
+}
+
+.button input {
+    background-color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.3);
+    color: var(--black);
+    cursor: pointer;
+    padding: var(--padding) var(--double-padding);
+    transition: background-color var(--animation), color var(--animation), box-shadow var(--animation);
+    width: 100%;
+}
+
+.button input:hover {
+    background-color: var(--accent);
+    color: white;
+}
+
+.button input:active {
+    background-color: var(--accent);
+    box-shadow: inset 0 6px 12px -2px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+.warning input:hover, .warning input:active {
+    background: var(--highlight);
+}
+
+.first {
+    margin-left: var(--margin);
+}
+
+.push {
+    margin-left: auto;
+}
+
+.link {
+    color: var(--white);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/**
+ * Header
+ */
+header {
+    background-color: var(--black);
+    font-size: 120%;
+    font-weight: bold;
+}
+
+/**
+ * Panels
+ */
+main {
+    background-color: var(--default);
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    padding: var(--padding);
+}
+
+.left-side {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+}
+
+.first-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.panel {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.3);
+    margin: var(--margin);
+}
+
+#inputs {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+#controls {
+    display: flex;
+    flex-direction: row;
+    padding-top: var(--padding);
+}
+
+#stats {
+    flex-grow: 1;
+}
+
+#cache {
+    flex-grow: 3;
+}
+
+#ram {
+    flex-grow: 1;
+    margin: var(--margin);
+}
+
+/**
+ * Section
+ */
 
 section {
-    background: #efefef;
+    background-color: var(--accent);
 }
 
+/**
+ * Footer
+ */
 footer {
-    background: crimson;
-}
-
-#container {
-    padding: 2em;
+    background-color: var(--black);
+    color: var(--white);
+    text-align: center;
 }
