@@ -1,135 +1,177 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Simulador de memória cache</title>
-        
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    
-    <body>
-        <header>
-            Simulador de Gerenciamento de Memória Cache
-        </header>
-        
-        <main>
-            <div class="left-side">
-                <div class="first-row">
-                    <div class="panel" id="inputs">
-                        <form id="values">
-                            <div class="legend">
-                                Painel de entrada
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		
+		<title>Simulador de gerenciamento de memória cache</title>
+		
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	
+	<body>
+		<header class="bold">C2MS - Cache Memory Manager Simulator</header>
+		
+		<main>
+			<div class="left-side">
+				<div class="first-row">
+					<section id="inputs">
+						<form id="values">
+							<div class="legend">
+								Painel de entrada
+								
+								<div id="reset" class="control push">
+									<i class="fa fa-eraser"></i>
+								</div>
+							</div>
 
-                                <div id="reset" class="control push">
-                                    <i class="fa fa-eraser"></i>
-                                </div>
-                            </div>
+							<div class="body">
+								<div class="input text">
+									<label>Endereço</label>
+									<input type="text" id="address" placeholder="Qual o endereço da célula da memória cache?">
+								</div>
 
-                            <div class="input text">
-                                <label for="address">Endereço</label>
-                                <input type="text" id="address" placeholder="Qual o endereço da célula da memória cache?">
-                            </div>
+								<div class="input text">
+									<label>Valor</label>
+									<input type="text" id="value" placeholder="O que quer escrever neste endereço?">
+								</div>
 
-                            <div class="input text">
-                                <label for="value">Valor</label>
-                                <input type="text" id="value" placeholder="O que quer escrever neste endereço?">
-                            </div>
+								<div id="controls">
+									<div class="input button push">
+										<button type="button" id="read"><i class="fa fa-search"></i> Ler</button>
+									</div>
 
-                            <div id="controls">
-                                <div class="input button push">
-                                    <button type="button" id="read">
-                                        <i class="fa fa-search"></i> Ler
-                                    </button>
-                                </div>
+									<div class="input button last">
+										<button type="button" id="write"><i class="fa fa-edit"></i> Escrever</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</section>
 
-                                <div class="input button">
-                                    <button type="button" id="write">
-                                        <i class="fa fa-edit"></i> Escrever
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+					<section id="stats">
+						<div class="legend">Estatísticas</div>
 
-                    <div class="panel" id="stats">
-                        <div class="legend">
-                            Estatísticas
-                        </div>
+						<div class="scrollable">
+							<div class="body">
+								<div class="stat">
+									Acessos
+									<div id="accesses" class="bold push">0</div>
+								</div>
+								
+								<div class="stat">
+									Acertos
+									<div id="hits" class="bold push">0</div>
+								</div>
+								
+								<div class="stat">
+									Faltas
+									<div id="misses" class="bold push">0</div>
+								</div>
+								
+								<div class="stat">
+									Leituras
+									<div id="reads" class="bold push">0</div>
+								</div>
+								
+								<div class="stat">
+									Escritas
+									<div id="writes" class="bold push">0</div>
+								</div>
+								
+								<div class="stat">
+									Acertos na leitura
+									<div id="readHits" class="bold push">0</div>
+								</div>
+								
+								<div class="stat">
+									Acertos na escrita
+									<div id="writeHits" class="bold push">0</div>
+								</div>
+								
+								<div class="stat">
+									Faltas na leitura
+									<div id="readMisses" class="bold push">0</div>
+								</div>
+								
+								<div class="stat last">
+									Faltas na escrita
+									<div id="writeMisses" class="bold push">0</div>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
 
-                        <div class="scrollable">
-                            <!-- <div> -->
-                                <div class="row">
-                                    <span class="description">Acessos</span>
-                                    <div id="accesses" class="number push">123</div>
-                                </div>
-                                
-                                <div class="row">
-                                    <span class="description">Acertos</span>
-                                    <div id="hits" class="number push">123</div>
-                                </div>
-                                
-                                <div class="row">
-                                    <span class="description">Faltas</span>
-                                    <div id="misses" class="number push">123</div>
-                                </div>
-                                
-                                <div class="row">
-                                    <span class="description">Leituras</span>
-                                    <div id="reads" class="number push">123</div>
-                                </div>
-                                
-                                <div class="row">
-                                    <span class="description">Escritas</span>
-                                    <div id="writes" class="number push">123</div>
-                                </div>
-                                
-                                <div class="row">
-                                    <span class="description">Acertos na leitura</span>
-                                    <div id="readHits" class="number push">123</div>
-                                </div>
-                                
-                                <div class="row">
-                                    <span class="description">Acertos na escrita</span>
-                                    <div id="writeHits" class="number push">123</div>
-                                </div>
-                                
-                                <div class="row">
-                                    <span class="description">Faltas na leitura</span>
-                                    <div id="readMisses" class="number push">123</div>
-                                </div>
-                                
-                                <div class="row">
-                                    <span class="description">Faltas na escrita</span>
-                                    <div id="writeMisses" class="number push">123</div>
-                                </div>
-                            <!-- </div> -->
-                        </div>
-                    </div>
-                </div>
+				<section id="cache">
+					<div class="legend">Memória cache</div>
 
-                <div class="panel" id="cache">
-                    <div class="legend">
-                        Memória cache
-                    </div>
-                </div>
-            </div>
+					<div class="scrollable">
+						<div class="body">
+							<table>
+								<thead>
+									<tr>
+										<th id="labels">Rótulo</th>
+										<th id="frames">Quadro</th>
+										<th id="valid">Válido</th>
+									</tr>
+								</thead>
 
-            <div class="panel" id="ram">
-                <div class="legend">
-                    Memória principal
-                </div>
-            </div>
-        </main>
+								<tbody>
+									<tr>
+										<!-- As linhas são geradas automaticamente -->
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</section>
+			</div>
 
-        <footer>
-            Desenvolvido por Ana Caroline, Marlon Luís e Matheus Welter © 2018 - Disponível gratuitamente no <a class="link" target="_blank" href="https://github.com/mlc2307/simulador_memoria_cache">GitHub</a> <i class="fa fa-external-link-alt"></i>
-        </footer>
+			<section id="ram">
+				<div class="legend">Memória principal</div>
 
-        <script src="js/jquery-3.3.1.js"></script>
-        <script src="js/fontawesome-all.js"></script>
-        <script src="js/script.js"></script>
-    </body>
+				<div class="scrollable">
+					<div class="body">
+						<table>
+							<thead>
+								<tr>
+									<th>Endereço</th>
+									<th>Bloco</th>
+									<th>Dado</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<!-- As linhas são geradas automaticamente -->
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</section>
+
+			<section id="log">
+				<div class="legend">Relatório de eventos</div>
+
+				<div class="scrollable">
+					<div class="body">
+						<!-- Será gerado dinamicamente -->
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer>
+			Desenvolvido por Ana Caroline, Marlon Luís e Matheus Welter © 2018 - Código-fonte disponível no
+			<a class="link" target="_blank" href="https://github.com/mlc2307/simulador_memoria_cache">GitHub</a>
+			<i class="fa fa-external-link-alt"></i>
+		</footer>
+
+		<script src="js/jquery-3.3.1.js"></script>
+		<script src="js/fontawesome-all.js"></script>
+		<script src="js/date-format.js"></script>
+		<script src="js/script.js"></script>
+	</body>
 </html>
